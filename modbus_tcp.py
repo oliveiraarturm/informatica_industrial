@@ -6,14 +6,14 @@ from umodbus.tcp import ModbusTCP
 # Wi-Fi
 # -------------------------
 
-SSID = "ssid"
-PASSWORD = 
+SSID = "Kitnet06"
+PASSWORD = "478288324@"
 
 wifi = network.WLAN(network.STA_IF)
 wifi.active(True)
 
 if not wifi.isconnected():
-    print("Connecting Wi-Fi...")
+    print("Connecting to Wi-Fi...")
     wifi.connect(SSID, PASSWORD)
 
     while not wifi.isconnected():
@@ -21,9 +21,8 @@ if not wifi.isconnected():
 
 ip = wifi.ifconfig()[0]
 
-print("Connected")
+print("Wi-Fi connected ✅")
 print("IP:", ip)
-
 
 # -------------------------
 # Modbus TCP
@@ -36,41 +35,25 @@ modbus.bind(
     local_port=502
 )
 
-
 # -------------------------
-# Counter
-# -------------------------
-
-counter = 0
-
-
-def register_read(reg_type, address, val):
-    global counter
-
-    counter += 1
-
-    if counter > 65535:
-        counter = 0
-
-    modbus.set_hreg(
-        address=0,
-        value=counter
-    )
-
-    print("Elipse read register:", counter)
-
-
 # Holding Register 0
-modbus.add_hreg(
-    address=0,
-    value=0,
-    on_get_cb=register_read
-)
+# -------------------------
 
+registers = {
+    "HREGS": {
+        "TEST": {
+            "register": 0,
+            "len": 1,
+            "val": 123
+        }
+    }
+}
 
-print("Modbus TCP ready")
-print("Holding Register 0")
+modbus.setup_registers(registers=registers)
 
+print("Modbus TCP started ✅")
+print("Port: 502")
+print("Holding Register 0 = 123")
 
 # -------------------------
 # Main loop
