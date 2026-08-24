@@ -6,8 +6,8 @@ from umodbus.tcp import ModbusTCP
 # Wi-Fi
 # -------------------------
 
-SSID = "Kitnet06"
-PASSWORD = "478288324@"
+SSID = "ssid"
+PASSWORD = 
 
 wifi = network.WLAN(network.STA_IF)
 wifi.active(True)
