@@ -35,25 +35,27 @@ modbus.bind(
     local_port=502
 )
 
+
+def register_read(reg_type, address, val):
+
+    print("Elipse read register!")
+
+
 # -------------------------
 # Holding Register 0
 # -------------------------
 
-registers = {
-    "HREGS": {
-        "TEST": {
-            "register": 0,
-            "len": 1,
-            "val": 123
-        }
-    }
-}
+modbus.add_hreg(
+    address=0,
+    value=123,
+    on_get_cb = register_read
+)
 
-modbus.setup_registers(registers=registers)
+
 
 print("Modbus TCP started ✅")
 print("Port: 502")
-print("Holding Register 0 = 123")
+
 
 # -------------------------
 # Main loop
