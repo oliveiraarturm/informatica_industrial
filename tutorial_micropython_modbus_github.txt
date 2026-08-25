@@ -1,0 +1,68 @@
+Instalando micropython-modbus no ESP32 manualmente pelo GitHub
+===============================================================
+
+Este método instala a biblioteca sem usar pip, mip ou internet diretamente no ESP32.
+
+Repositório:
+https://github.com/brainelectronics/micropython-modbus
+
+1. Baixe a biblioteca
+---------------------
+No GitHub, clique em:
+
+Code > Download ZIP
+
+Depois, extraia o arquivo ZIP no computador.
+
+2. Localize a pasta umodbus
+---------------------------
+Dentro da pasta extraída, localize a pasta:
+
+umodbus
+
+Ela contém os arquivos da biblioteca, como tcp.py, modbus.py, __init__.py etc.
+
+3. Abra o Thonny
+----------------
+Conecte o ESP32 ao computador e abra o Thonny.
+
+Selecione o interpretador MicroPython correspondente ao ESP32.
+
+Depois abra:
+
+View > Files
+
+4. Copie a biblioteca para o ESP32
+----------------------------------
+No sistema de arquivos do ESP32, crie a pasta:
+
+/lib
+
+Em seguida, copie a pasta inteira "umodbus" para dentro de /lib.
+
+A estrutura final deve ficar aproximadamente assim:
+
+/lib/
+    umodbus/
+        __init__.py
+        tcp.py
+        modbus.py
+        ...
+
+5. Reinicie o ESP32
+-------------------
+Após copiar os arquivos, reinicie o ESP32 ou reinicie o interpretador MicroPython pelo Thonny.
+
+6. Teste a instalação
+---------------------
+No Shell do Thonny, execute:
+
+from umodbus.tcp import ModbusTCP
+
+Se nenhum erro aparecer, a biblioteca foi instalada corretamente.
+
+Resumo
+------
+GitHub -> Download ZIP -> extrair -> copiar a pasta "umodbus" -> /lib/umodbus no ESP32 -> reiniciar -> importar.
+
+Esse método é útil quando o ESP32 não consegue instalar a biblioteca diretamente pela internet.
