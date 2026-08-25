@@ -61,8 +61,3 @@ from umodbus.tcp import ModbusTCP
 
 Se nenhum erro aparecer, a biblioteca foi instalada corretamente.
 
-Resumo
-------
-GitHub -> Download ZIP -> extrair -> copiar a pasta "umodbus" -> /lib/umodbus no ESP32 -> reiniciar -> importar.
-
-Esse método é útil quando o ESP32 não consegue instalar a biblioteca diretamente pela internet.
