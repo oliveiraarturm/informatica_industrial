@@ -27,3 +27,16 @@ class RTU:
             return None
 
         return r.registers[0]
+
+    async def write(self, address, value):
+
+        r = await self.client.write_register(
+            address=address,
+            value=value,
+            device_id=self.device_id,
+        )
+
+        if r.isError():
+            return False
+
+        return True
