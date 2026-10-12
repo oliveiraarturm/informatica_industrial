@@ -37,7 +37,7 @@ async def main():
             value = 1 if value else 0
 
             # PLC2 D0
-            await plc2.write(
+            await plc2.write_hr(
                 0x4338,
                 value
             )

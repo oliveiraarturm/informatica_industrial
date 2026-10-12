@@ -14,10 +14,10 @@ async def main():
 
     while True:
 
-        value = await plc.read(0x4338) #change to 0 when dealing with powerhud
+        value = await plc.read_hr(0x4338) #change to 0 when dealing with powerhud
 
         if value is not None:
-            await tcp.write(0, value)
+            await tcp.write_hr(0, value)
             print("D0 =", value)
 
         await asyncio.sleep(0.5)
