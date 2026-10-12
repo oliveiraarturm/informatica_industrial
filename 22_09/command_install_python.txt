@@ -1,2 +1,0 @@
-Set-ExecutionPolicy -Scope Process Bypass -Force
-.\install_python.ps1

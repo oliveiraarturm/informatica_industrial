@@ -14,7 +14,7 @@ async def main():
 
     while True:
 
-        value = await plc.read(0x4338)
+        value = await plc.read(0x4338) #change to 0 when dealing with powerhud
 
         if value is not None:
             await tcp.write(0, value)
