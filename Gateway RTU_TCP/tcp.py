@@ -10,18 +10,24 @@ class TCP:
     def __init__(self, port=1502, device_id=1, count=100):
         self.device_id = device_id
 
+
         device = SimDevice(
-
             device_id,
-
             (
+                # 1. Coils (memórias M0, M1, M2...)
                 [SimData(0, count=count, values=False, datatype=DataType.BITS)],
-                
+
+                # 2. Discrete Inputs
+                [],
+
+                # 3. Holding Registers (D0, D1, D2...)
                 [SimData(0, count=count, values=0, datatype=DataType.REGISTERS)],
-               
+
+                # 4. Input Registers
+                [],
             ),
-            
         )
+
 
         self.server = ModbusTcpServer(
 
