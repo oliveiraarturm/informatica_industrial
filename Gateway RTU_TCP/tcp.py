@@ -14,17 +14,17 @@ class TCP:
         device = SimDevice(
             device_id,
             (
-                # 1. Coils (memórias M0, M1, M2...)
+                # Coils (M0, M1, M2...)
                 [SimData(0, count=count, values=False, datatype=DataType.BITS)],
 
-                # 2. Discrete Inputs
-                [],
+                # Discrete Inputs (não utilizados)
+                [SimData(0, count=1, values=False, datatype=DataType.BITS)],
 
-                # 3. Holding Registers (D0, D1, D2...)
+                # Holding Registers (D0, D1, D2...)
                 [SimData(0, count=count, values=0, datatype=DataType.REGISTERS)],
 
-                # 4. Input Registers
-                [],
+                # Input Registers (não utilizados)
+                [SimData(0, count=1, values=0, datatype=DataType.REGISTERS)],
             ),
         )
 
