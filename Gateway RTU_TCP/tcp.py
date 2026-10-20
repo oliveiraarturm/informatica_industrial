@@ -61,3 +61,19 @@ class TCP:
         )
 
         return True
+
+    async def read_memory(self, address):
+        values = await self.server.async_getValues(
+            self.device_id, 1, address, 1
+        )
+        return bool(values[0])
+
+    async def read_hr(self, address):
+
+        values = await self.server.async_getValues(
+            self.device_id, 3, address, 1
+        )
+
+        return values[0]
+
+    
