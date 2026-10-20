@@ -12,8 +12,7 @@ async def main():
     await plc.connect()
     await tcp.start()
 
-    last_command = None
-    last_hr_command = await tcp.read_hr(1)
+
 
     while True:
 
