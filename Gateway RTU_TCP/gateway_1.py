@@ -69,23 +69,17 @@ async def main():
 
         command_m = await tcp.read_memory(X)
 
+        await plc.write_memory(0xENDEREÇO_TPW_HEXADECIMAL, command_m)
 
-        if command_m is not None and command_m != last_command:
-
-            success = await plc.write_memory(0xENDEREÇO_TPW_HEXADECIMAL, command_m)
-
-   
-
-
+        
 
         command_hr = await tcp.read_hr(X)
 
-        if command_hr != last_hr_command:
+        await plc.write_hr(0xENDEREÇO_TPW_HEXADECIMAL, command_hr)
+   
 
-            await plc.write_hr(0xENDEREÇO_TPW_HEXADECIMAL, command_hr)
 
-          
-
+      
         await asyncio.sleep(0.5)
 
 
